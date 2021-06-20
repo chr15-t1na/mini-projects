@@ -6,17 +6,23 @@ window = Tk()
 window.geometry("600x400")
 window.title("Password Generator")
 Label(window, text = "Generate a password ", font =('Verdana', 15)).pack(side = TOP, pady=40)
+
+#Store value before clearing window
+var = IntVar()
+alphabet_list = 0
+
 pw = []
 new_password = 0
 duration = 0
 
-var = IntVar()
-alphabet_list = 0
-
+#Grouping radio buttons
 radioGroup = LabelFrame(window, text = "Select strength")
 radioGroup.pack()
 
 def char_range():
+    """
+    Setting radio values
+    """
     global alphabet_list
 
     if var.get() == 1:
@@ -31,7 +37,7 @@ alphanum = Radiobutton(radioGroup, text = "Alphanumeric (safer)", variable = var
 alphanum_punct = Radiobutton(radioGroup, text = "Alphanumeric + punctuation (safest)", variable = var, value = 3, command = lambda: char_range()).pack(anchor=W, padx = 5, pady = 5)
 Label(window, text = "Select your password length: ").pack(padx = 10, pady = 10)
 
-#Store int value before clearing window
+#Store value before clearing window
 pw_length = IntVar()
 pw_length.set("")
 pw_input = Entry(window, text = "", textvariable=pw_length)
@@ -41,6 +47,9 @@ generate = Button(window, text = "Generate password!", command = lambda: callbac
 generate.pack(padx = 10, pady = 10)
 
 def callback_destroy(btn):
+    """
+    User input error handeling
+    """    
     try:
         alphabet_list != 0 or int(pw_length.get())
     except:    
@@ -63,11 +72,14 @@ def password (arg):
         new_password = "".join(pw)
     
     Label(window, text = f"\n Your new password:\n").pack(padx = 10, pady = 10)
-    Label(window, text = f"\n {new_password} \n", font =('Verdana', 15)).pack(padx = 10, pady = 10)
+    Label(window, text = f"\n {new_password} \n", font =('Verdana', 20)).pack(padx = 10, pady = 10)
     Label(window, text = f"\n Brute-force attacks will take {duration} minutes* to crack this password \n", font =('Verdana', 10)).pack(padx = 10, pady = 10)
     Label(window, text = f"\n *Core efficiencies are not taken into consideration, \n calculated speed 17042497kps \n", font =('Verdana', 5)).pack(padx = 10, pady = 10)
 
 def crack_time():
+    """
+    Calculating time to crack the password
+    """
     global duration
 
     k = pw_length.get()
