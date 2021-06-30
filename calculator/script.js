@@ -1,11 +1,10 @@
-let num1 = "";
-let num2 = "";
-let result ="";
-let operator = "";
-let output = 0;
-let screen = document.querySelector("#screen");
+let NUM1 = "";
+let NUM2 = "";
+let RESULT ="";
+let OPERATOR = "";
+let SCREEN = document.querySelector("#SCREEN");
 
-let buttons = { "one" : 1,
+let BUTTONS = { "one" : 1,
 "two" : 2,
 "three" : 3,
 "four" : 4,
@@ -29,7 +28,7 @@ let buttons = { "one" : 1,
 "enter" : "ent",
 };
 
-let btns = document.querySelectorAll('button'); //get all buttons
+let btns = document.querySelectorAll('button'); //get all BUTTONS
 btns.forEach( btn => {
     btn.addEventListener('click', keyButtons);
 });
@@ -38,64 +37,64 @@ function keyButtons (e) {
     let id = e.currentTarget.id;    //get the clicked div's id
     switch (id){
         case "dele":                        // not fixed yet
-            console.log(screen.innerText)       
+            console.log(SCREEN.innerText)       
             console.log("working")
             break;
         case "clr":
-            num1="";
-            num2="";
-            result="";
-            operator="";
-            screen.innerText = 0;
+            NUM1="";
+            NUM2="";
+            RESULT="";
+            OPERATOR="";
+            SCREEN.innerText = 0;
             break;
         case "perc":
-            screen.innerText =+ screen.innerText/100;   // not fixed yet
+            SCREEN.innerText =+ SCREEN.innerText/100;   // not fixed yet
             break;   
         default:    
-            if(result != ""){
-                num1=result
-                operator = "";
-                num2 = "";
+            if(RESULT != ""){
+                NUM1=RESULT
+                OPERATOR = "";
+                NUM2 = "";
             } else if (id == "sum" || id =="sub" || id =="multi"|| id =="divi") {
-                operator = String(id);
+                OPERATOR = String(id);
             } else if (id =="enter") {
-                return calculation(num1, num2, operator);
-            } else if (operator != "") {
-                console.log(num2);
-                num2 =+ String(num2)+String(buttons[id]);
-                screen.innerText = num2; 
+                return calculation(NUM1, NUM2, OPERATOR);
+            } else if (OPERATOR != "") {
+                console.log(NUM2);
+                NUM2 =+ String(NUM2)+String(BUTTONS[id]);
+                SCREEN.innerText = NUM2; 
             } else {
-                num1 =+ String(num1)+String(buttons[id]);
-                screen.innerText = num1;
+                NUM1 =+ String(NUM1)+String(BUTTONS[id]);
+                SCREEN.innerText = NUM1;
             }  
             break;
     }              
 }
 
 
-function calculation(num1, num2, operator){
-switch (operator) {
+function calculation(val1, val2, p_operator){
+switch (p_operator) {
     case "sum":
-        result = parseInt(num1)+parseInt(num2);
-        screen.innerText=result;
+        RESULT = parseInt(val1)+parseInt(val2);
+        SCREEN.innerText=RESULT;
         break;
     case "sub":
-        var result = parseInt(num1)-parseInt(num2);
+        var RESULT = parseInt(val1)-parseInt(val2);
         operator = "";
-        num2 = "";
-        screen.innerText=result
+        NUM2 = "";
+        SCREEN.innerText=RESULT
         break;
     case "multi":
-        var result = parseInt(num1)*parseInt(num2);
+        var RESULT = parseInt(val1)*parseInt(val2);
         operator = "";
-        num2 = "";
-        screen.innerText=result
+        NUM2 = "";
+        SCREEN.innerText=RESULT
         break;
     case "divi":
-        var result = parseInt(num1)/parseInt(num2);
+        var RESULT = parseInt(val1)/parseInt(val2);
         operator = "";
-        num2 = "";
-        screen.innerText=result
+        NUM2 = "";
+        SCREEN.innerText=RESULT
         break;          
     }
 }
