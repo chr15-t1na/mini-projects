@@ -23,9 +23,9 @@ computer_input = 0
 #Play buttons
 play_btn = Button(root, text = "Play!", command = lambda: callback_and_hide(play_btn))
 play_btn.pack()
-paper_img = PhotoImage(file = "Paper Rock Scissor/paper.png")
-rock_img = PhotoImage(file = "Paper Rock Scissor/rock.png")
-scissor_img = PhotoImage(file = "Paper Rock Scissor/scissor.png")
+paper_img = PhotoImage(file = "paper-rock-scissor/paper.png")
+rock_img = PhotoImage(file = "paper-rock-scissor/rock.png")
+scissor_img = PhotoImage(file = "paper-rock-scissor/scissor.png")
 
 
 
