@@ -2,7 +2,7 @@ let NUM1 = "";
 let NUM2 = "";
 let RESULT ="";
 let OPERATOR = "";
-let SCREEN = document.querySelector("#SCREEN");
+let SCREEN = document.querySelector("#screen");
 
 let BUTTONS = { "one" : 1,
 "two" : 2,
@@ -18,8 +18,6 @@ let BUTTONS = { "one" : 1,
 "sub" : "-",
 "multi" : "*",
 "divi" : "/",
-"del" : "",
-"clr" : "",
 "dot" : ".",
 "swtch" : "*-1",
 "perc" : "%",
@@ -28,7 +26,7 @@ let BUTTONS = { "one" : 1,
 "enter" : "ent",
 };
 
-let btns = document.querySelectorAll('button'); //get all BUTTONS
+let btns = document.querySelectorAll('button'); //get all buttons
 btns.forEach( btn => {
     btn.addEventListener('click', keyButtons);
 });
@@ -61,10 +59,10 @@ function keyButtons (e) {
                 return calculation(NUM1, NUM2, OPERATOR);
             } else if (OPERATOR != "") {
                 console.log(NUM2);
-                NUM2 =+ String(NUM2)+String(BUTTONS[id]);
+                NUM2 += String(BUTTONS[id]);
                 SCREEN.innerText = NUM2; 
             } else {
-                NUM1 =+ String(NUM1)+String(BUTTONS[id]);
+                NUM1 += String(BUTTONS[id]);
                 SCREEN.innerText = NUM1;
             }  
             break;
@@ -76,23 +74,25 @@ function calculation(val1, val2, p_operator){
 switch (p_operator) {
     case "sum":
         RESULT = parseInt(val1)+parseInt(val2);
+        OPERATOR = "";
+        NUM2 = "";
         SCREEN.innerText=RESULT;
         break;
     case "sub":
         var RESULT = parseInt(val1)-parseInt(val2);
-        operator = "";
+        OPERATOR = "";
         NUM2 = "";
         SCREEN.innerText=RESULT
         break;
     case "multi":
         var RESULT = parseInt(val1)*parseInt(val2);
-        operator = "";
+        OPERATOR = "";
         NUM2 = "";
         SCREEN.innerText=RESULT
         break;
     case "divi":
         var RESULT = parseInt(val1)/parseInt(val2);
-        operator = "";
+        OPERATOR = "";
         NUM2 = "";
         SCREEN.innerText=RESULT
         break;          
