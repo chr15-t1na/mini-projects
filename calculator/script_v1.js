@@ -35,7 +35,8 @@ var disp = (function display () {
 
     function addNumb(val){
             numberStorage.push(val);
-            SCREEN.innerText = numberStorage[-1];
+            console.log(numberStorage)
+            SCREEN.innerText = numberStorage[numberStorage.length-1];
     }
     function addOperators(val){
             operatorStorage += String(val); 
@@ -55,24 +56,24 @@ var disp = (function display () {
         others_bts : function (id) {
                         switch (id) {
                         case "enter":
-                            result = eval(numberStorage[0]+operatorStorage[0]+numberStorage[1]);
+                            result = eval(numberStorage[0]+operatorStorage[0]+numberStorage[numberStorage.length-1]);
                             numberStorage = [];
                             operatorStorage = [];
-                            console.log(result)
                             addNumb(result);
                             break;
                         case "dele":
-                            numberStorage.pop(numberStorage[-1])
+                            numberStorage.pop(numberStorage[numberStorage.length-1]);
+                            break;
                         case "clr":
                             numberStorage = [];
                             operatorStorage = [];
                             SCREEN.innerText = 0;
                             break;
                         case "perc":
-                            console.log(SCREEN.innerText)
-                            percentage = SCREEN.innerText/100;
-                            numberStorage.splice(-1, 1, percentage);
-                            SCREEN.innerText = percentage;
+                            numbs = Number(numberStorage[numberStorage.length-1])/100;
+                            numberStorage.pop(numberStorage[numberStorage.length-1]);
+                            console.log(numberStorage);
+                            SCREEN.innerText = numbs;
                             break;
                         case "swtch":
 
