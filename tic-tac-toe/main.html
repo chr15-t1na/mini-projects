@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Tic-Tac-Toe</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Tic-Tac-Toe</h1>
+        <div class="modal">
+            <!-- Button to open the modal form -->
+            <div onload="document.getElementById('id01').style.display='block'"></div>
+            </div>
+            <!-- The Modal -->
+            <div id="id01" class="modal" style="display:block;">
+            <!-- Modal Content -->
+              <form name="myform" class="modal-content animate" action="javascript:display()">
+                <div class="container" id="playForm">
+                    <h2>Choose play mode</h2>
+                    <input type="radio" class="players">
+                    <label class="players">Player vs Player</label>
+                    <input type="radio" class="players">
+                    <label class="players">Player vs AI</label>
+                </div>
+                <div class="container2">
+                  <button type="submit" class="btn btn-primary" id="play" onclick="document.getElementById('id01').style.display='none'">Play!</button>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="board">
+            <div class="row" id="first-row">
+                <div class="field" id="f1"></div>
+                <div class="field" id="f2"></div>
+                <div class="field" id="f3"></div>
+            </div>
+            <div class="row" id="second-row">
+                <div class="field" id="f4"></div>
+                <div class="field" id="f5"></div>
+                <div class="field" id="f6"></div>
+            </div>
+            <div class="row" id="third-row">
+                <div class="field" id="f7"></div>
+                <div class="field" id="f8"></div>
+                <div class="field" id="f9"></div>
+            </div>
+        </div>        
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="script.js" async defer></script>
+    </body>
+</html>

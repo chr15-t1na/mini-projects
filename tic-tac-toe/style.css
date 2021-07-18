@@ -1,27 +1,44 @@
-
 body {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
-    display: flex;
-    font-size: 3rem;
-    color: #FFFFFF; 
-    font-weight: 700;
-    align-items: flex-start;
-    justify-content: center;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
+    color: aquamarine;
+    padding-bottom: 10rem;
 }
 
-.main-container {
+.board {
+    background-color: aqua;
+    width: 18rem;
+    height: 18rem;
+}
+
+.row { 
+    display: flex;
+    flex-direction: row;
+    background-color: blueviolet;
+    width: 18rem;
+    height: 6rem;
+    border: 2px solid red;
+}
+
+.field {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-} 
+    align-items: center;
+    border-color: aliceblue;
+    width: 6rem;
+    height: 6rem;
+    border: 2px solid greenyellow;
+    color: aliceblue;
+    font-size: 5rem;
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
 
 /* The Modal (background) */
 .modal {
@@ -57,11 +74,6 @@ h1 {
     font-weight: bold;
 }
 
-#summary {
-    height: 10rem;
-    overflow-wrap: break-word;
-}
-
 #new {
     height: 5rem;
     width: 10rem;
@@ -70,22 +82,6 @@ h1 {
     background-color: rgb(216, 95, 210);
     border-color: whitesmoke;
     box-shadow: 5px 10px 18px grey;
-}
-
-#btn-div {
-    display: flex;
-    justify-content: center;
-}
-
-#card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(15rem, 1fr));
-    grid-gap: 2rem;
-    padding: 10rem;
-}
-
-.card-header {
-    border-style: solid !important;
 }
 
 /* Close button on hover */

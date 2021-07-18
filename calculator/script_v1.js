@@ -26,8 +26,6 @@ var btns = document.querySelectorAll('button'); //get all buttons
         btn.addEventListener('click', f = (e) => {disp.numbers(e.currentTarget.id); disp.others_bts(e.currentTarget.id)});
     });
 
- 
-
 var disp = (function display () {
     var numberStorage = [];
     var operatorStorage = [];

@@ -1,4 +1,4 @@
-const ACCORDION = document.getElementById("accordionExample");
+const ACCORDION = document.getElementById("card-container");
 const FORM = document.getElementById("bookForm");
 const NEWBTN = document.getElementById("new");
 NEWBTN.addEventListener("click", registerBook);
@@ -102,23 +102,19 @@ function Book(title, firstName, lastName, genre, isbn, summary, read) {
     createAccordion(this.bookTitle, this.firstName, this.lastName, this.genre, this.isbn, this.summary, this.read)
 };
 
-function createAccordion (cTitle, cFirstN, cLastN, cGenre, cIsbn, cSummary, cRead) {
-    ACCORDION.insertAdjacentHTML("afterbegin", `
-    <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        ${cTitle}
-      </button>
-    </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <p> Author: ${cFirstN} ${cLastN}</p>
-            <p> Genre: ${cGenre}</p>
-            <p> ISBN: ${cIsbn}</p>
-            <p style = "overflow-wrap: break-word;"> Summary: ${cSummary}</p>
-            <p> Read: ${cRead}</p>
-          </div>
-        </div>  
+function createAccordion (cTitle, cFirstN, cLastN, cGenre, cIsbn, cSummary, cRead) {
+  ACCORDION.insertAdjacentHTML("afterbegin", `
+    <div class="cardItem" style="background-color: pink; border-radius: 5px; box-shadow: 5px 10px 18px grey;">
+      <div class="card-content">
+        <div class="card-body">
+          <p style="font-size: 2rem; color: #FFFFFF; font-weight: 700; text-align: center">  ${cTitle}</p>
+          <p> Author: ${cFirstN} ${cLastN}</p>
+          <p> Genre: ${cGenre}</p>
+          <p> ISBN: ${cIsbn}</p>
+          <p style = "overflow-wrap: break-word;"> Summary: ${cSummary}</p>
+          <p> Read: ${cRead}</p>
+        </div>
+      </div>
     </div>
-  `  
-)};
+  `  
+  )};
