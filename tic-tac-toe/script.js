@@ -1,6 +1,8 @@
 const playBoard = function (){
-    const _fields = [[,,],[,,],[,,]];
-    var _rounds = [];
+    let _fields = [[,,],[,,],[,,]];
+    let _rounds = [];
+    let _radioChoice = document.getElementById("AI").checked;
+
 
     return {
         moves: function (move) {
@@ -14,6 +16,9 @@ const playBoard = function (){
                         _fields[x][y] = "O";
                         _rounds.push("O");
                         playBoard.winner();                    
+ 
+                    } if( _radioChoice == true){
+                        playBoard.AI();
 
                     } else {
                         document.getElementById(move).innerHTML = "X";
@@ -21,8 +26,8 @@ const playBoard = function (){
                         _rounds.push("X");
                         playBoard.winner();
 
-                    }
-                }    
+                        };
+                    };    
             },
         
         winner: function () {
@@ -44,105 +49,123 @@ const playBoard = function (){
                     }              
             },
 
-        AI: function AIplayer () {
-
-                var minDecisionTree = [];
-                var maxDecisionTree = [];
+        AI: function AIplayer (){
                 var playerMin = [];
-                var playerMax = [];
+                var moves = [];
                 var currentBoard = _fields;
-                var treeDepth = 0
+                var treeDepth = 0;
+
+            function findMove(){
                 for (var i = 0; i < _fields.length; i++){
-                    for (var j = 0; j < _fields[i].length; j++){
+                    for (var j = 0; j < _fields[i].length; j++){    // calculating tree depth
                         if(_fields[i][j] === undefined) {
-                            treeDepth++
-                        }}}
+                            treeDepth += 1
+                            };
+                        };
+                    };
+                AI_min(currentBoard);
+                };
 
-
-
-
-            
-            function AI_min(board, depth){
-                if(depth !== 0){
-                depth--
+            function AI_min(board){
+                if(treeDepth !== 0){
+                treeDepth--
                 var freeFields = [];
-                var newBoard = _fields;
+                var newBoard = board;
 
-                for (var i = 0; i < _fields.length; i++){
-                    for (var j = 0; j < _fields[i].length; j++){
-                        if(_fields[i][j] === undefined) {
+                for (var i = 0; i < board.length; i++){
+                    for (var j = 0; j < board[i].length; j++){
+                        if(board[i][j] === undefined) {           //get all free field positions
                             freeFields.push(String(i)+String(j));
-                    }
-                for (var k = 0; k < freeFields.length; k++){
-                    newBoard[freeFields[k].charAt(0)][freeFields[k].charAt(1)] = "X";
-                    AI_max(newBoard, depth);
-                    heuristicValue(newBoard);
-                }
-                
-            };    
-            }    
+                            }
+                        for (var k = 0; k < freeFields.length; k++){
+                            newBoard[freeFields[k].charAt(0)][freeFields[k].charAt(1)] = "O";
+                            depth == 0
+                            AI_max(newBoard);                // run through all the free fields and mark them
+                            heuristicValue(newBoard);
+                            };
+                        };    
+                    }; 
+                    
+                if (moves.length != freeFields.length){     // record played moves
+                    moves = freeFields;
+                }    
+                };
+            };
 
-            function AI_max(board, depth){
-                if(depth !== 0){
-                depth--
+            function AI_max(board){
                 var freeFields = [];
-                var newBoard = _fields;
+                var newBoard = board;
 
-                for (var i = 0; i < _fields.length; i++){
-                    for (var j = 0; j < _fields[i].length; j++){
-                        if(_fields[i][j] === undefined) {
-                            freeFields.push(String(i)+String(j));
-                    }
-                for (var k = 0; k < freeFields.length; k++){
-                    newBoard[freeFields[k].charAt(0)][freeFields[k].charAt(1)] = "O";
-                    AI_min(newBoard, depth);
-                    heuristicValue(newBoard)
-                } 
-                
-            };
-            };
+                    for (var i = 0; i < board.length; i++){
+                        for (var j = 0; j < board[i].length; j++){
+                            if(board[i][j] === undefined) {
+                                freeFields.push(String(i)+String(j));
+                            };
+                    for (var k = 0; k < freeFields.length; k++){
+                        newBoard[freeFields[k].charAt(0)][freeFields[k].charAt(1)] = "X";
+                        AI_min(newBoard, depth);
+                        heuristicValue(newBoard);
+                            }; 
+                        };
+                    };
+                };
 
             function heuristicValue (board){
                     for (var i = 0; i < board.length; i++){
                         for (var j = 0; j < board[i].length; j++){
                             if(board[i][j] == board[i+1][j] && board[i+1][j] == board[i+2][j] && board[i][j] != undefined){
                                 console.log(board[i][j]);
-                                if(board[i][j] == "X"){
-                                    playerMin = -10
-                                }
-                            } 
+                                if(board[i][j] == "O"){
+                                    playerMin = -10;
+                                    } if(board[i][j] == "X"){
+                                    playerMin = 10;
+                                    }
+                                } 
                             if(board[i][j] == board[i][j+1] && board[i][j+1] == board[i][j+2] && board[i][j] != undefined){
                                 console.log(board[i][j]);
-                                if(board[i][j] == "X"){
-                                    playerMin = -10
+                                if(board[i][j] == "O"){
+                                    playerMin = -10;
+                                    } if(board[i][j] == "X"){
+                                      playerMin = 10;
+                                      }
                                 }
-                            }
                             if(board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != undefined){
                                 console.log(board[i][j]);
-                                if(board[0][2] == "X"){
-                                    playerMin = -10
+                                if(board[0][2] == "O"){
+                                    playerMin = -10;
+                                    } if(board[i][j] == "X"){
+                                      playerMin = 10;
+                                      }
                                 }
-                            }
                             if(board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != undefined){ 
                                 console.log(board[i][j]);
-                                if(board[0][0] == "X"){
-                                    playerMin = -10
-                                }
-                }
-            }
-            function terminalNode (){
+                                if(board[0][0] == "O"){
+                                    playerMin = -10;
+                                    } if(board[i][j] == "X"){
+                                    playerMin = 10;
+                                      }
+                                    };
+                            if(treeDepth === 0){
+                                playerMin = 0;
+                                    }        
+                                };
+    
+                            };                     
+                        };
+            function playMove (){
 
-            }
-           
-        },
-
-
-        } 
+            }            
+                    };    
+            }    
+        }           
 }();    
+
+
+
 
 const display = function (){
     let fields = document.querySelectorAll(".field");
     fields.forEach(field => {
         field.addEventListener("click", f = (e) => {playBoard.moves(e.currentTarget.id)})
     })
-}();
+}()

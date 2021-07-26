@@ -24,10 +24,10 @@
               <form name="myform" class="modal-content animate" action="javascript:display()">
                 <div class="container" id="playForm">
                     <h2>Choose play mode</h2>
-                    <input type="radio" class="players" required>
-                    <label class="players">Player vs Player</label>
-                    <input type="radio" class="players" required>
-                    <label class="players">Player vs AI</label>
+                    <input type="radio" name="choice" class="players" required>
+                    <label class="players" name="choice">Player vs Player</label>
+                    <input type="radio" name="choice" class="players" id="AI" value="true" required>
+                    <label class="players" name="choice">Player vs AI</label>
                 </div>
                 <div class="container2">
                   <button type="submit" class="btn btn-primary" id="play" onclick="document.getElementById('id01').style.display='none'">Play!</button>
