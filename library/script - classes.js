@@ -90,16 +90,19 @@ function userInput() {
     MODAL.innerHTML = "";
 };
 
-function Book(title, firstName, lastName, genre, isbn, summary, read) {
-  this.bookTitle = title;
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.genre = genre;
-  this.isbn = isbn;
-  this.summary = summary;
-  this.read = read;
-  localStorage.setItem(title, JSON.stringify(this));
-  createAccordion(this.bookTitle, this.firstName, this.lastName, this.genre, this.isbn, this.summary, this.read)
+class Book {
+
+  constructor (title, firstName, lastName, genre, isbn, summary, read) {
+    this.bookTitle = title;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.genre = genre;
+    this.isbn = isbn;
+    this.summary = summary;
+    this.read = read;
+    localStorage.setItem(title, JSON.stringify(this));
+    createAccordion(this.bookTitle, this.firstName, this.lastName, this.genre, this.isbn, this.summary, this.read)
+  }
 };
 
 function createAccordion (cTitle, cFirstN, cLastN, cGenre, cIsbn, cSummary, cRead) {
