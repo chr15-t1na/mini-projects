@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'Caveat';
+    src: url('./Caveat-VariableFont_wght.ttf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Playlist';
+    src: url('./Playlist-Script.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+body{
+    background-image: url("./images/background1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 1rem;
+    hyphens: auto; 
+    text-align: center;
+}
+
+.logo{
+    width: 35rem;
+    margin-bottom: -1rem;
+}
+
+#logo{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#content{
+    min-height:45rem;
+    min-width: 40rem;
+    background: rgba(225, 225, 225, .8);
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+.food{
+    width:20rem;
+    margin-bottom: 3rem;
+}
+
+.food-image{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius:10px;
+    margin-bottom: -2rem;
+    opacity: 2 !important;
+}
+
+.food-title{
+    font-family: 'Playlist';
+    font-size: 3rem;
+    margin-bottom: -1rem;
+}
+
+.title{
+    font-family: 'Playlist';
+    font-size: 4rem;
+    margin-top: 3rem;
+}
+
+.image{
+    height: 20rem;
+    width: 25rem;
+    opacity: 1 !important;
+    border-radius:10px;
+    margin-bottom: 5rem;
+}
+
+.myButton {
+	display:inline-block;
+    border-radius:10px;
+	cursor:pointer;
+	font-family:'Playlist';
+	font-size:2rem;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+    margin:1rem;
+}
+
+.myButton:hover {
+	background:linear-gradient(to bottom, white 5%, #f3c957 100%);
+	background-color:#f3c957;
+}
+
+.myButton:active {
+	position:relative;
+	top:1px;
+}
